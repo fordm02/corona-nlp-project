@@ -1,0 +1,34 @@
+---
+title: "ML H&M EDA"
+output: html_notebook
+---
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+df <- read.csv("h-and-m-personalized-fashion-recommendations/transactions_train.csv", nrows = 20000)
+articles <- read.csv("h-and-m-personalized-fashion-recommendations/articles.csv")
+```
+
+```{r}
+newdf <- inner_join(df, articles, by = "article_id")
+```
+
+```{r}
+
+barplot(table(newdf$product_group_name))
+barplot(table(newdf$graphical_appearance_name))
+barplot(table(newdf$colour_group_name))
+```
+
+```{r}
+hist(newdf$price)
+qqnorm(newdf$price)
+qqline(newdf$price)
+```
+
+```{r}
+
+```
